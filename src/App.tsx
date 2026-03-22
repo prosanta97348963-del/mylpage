@@ -339,8 +339,8 @@ const Hero = () => {
                   referrerPolicy="no-referrer"
                   onError={(e) => {
                     const target = e.target as HTMLImageElement;
-                    if (target.src !== "https://picsum.photos/seed/ashish/800/1100") {
-                      target.src = "https://picsum.photos/seed/ashish/800/1100";
+                    if (target.src !== "front-pic.jpg") {
+                      target.src = "front-pic.jpg";
                     }
                   }}
                 />
