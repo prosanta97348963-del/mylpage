@@ -47,6 +47,7 @@ interface Project {
   description: string;
   status: 'Ongoing' | 'Completed';
   link?: string;
+  buttonText?: string;
 }
 
 // --- Data ---
@@ -96,20 +97,28 @@ const MATERIALS: Material[] = [
 const PROJECTS: Project[] = [
   {
     id: '1',
+    title: 'Ashu Chatbot',
+    description: 'A smart conversational AI chatbot designed to assist users. Just interact with Ashu to experience seamless assistance and intelligent responses.',
+    status: 'Ongoing',
+    link: '#',
+    buttonText: 'Interact with Ashu'
+  },
+  {
+    id: '2',
     title: 'AI Content Optimizer',
     description: 'An AI-powered tool that analyzes and optimizes blog posts for SEO, ensuring higher rankings and better readability.',
     status: 'Ongoing',
     link: '#'
   },
   {
-    id: '2',
+    id: '3',
     title: 'DevPortfolio Template',
     description: 'A highly customizable, animated portfolio template for developers built with React, Tailwind CSS, and Framer Motion.',
     status: 'Completed',
     link: '#'
   },
   {
-    id: '3',
+    id: '4',
     title: 'SEO Tracker Dashboard',
     description: 'Dashboard to monitor keyword rankings, site performance metrics, and backlink profiles in real-time.',
     status: 'Ongoing',
@@ -230,7 +239,7 @@ const Hero = () => {
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-600/20 rounded-full blur-[120px] mix-blend-screen animate-pulse" style={{ animationDelay: '2s' }} />
       </div>
 
-      <div className="relative z-10 px-6 max-w-7xl mx-auto flex flex-col-reverse md:flex-row items-center justify-between gap-12 w-full">
+      <div className="relative z-10 px-6 max-w-7xl mx-auto flex flex-col-reverse md:flex-row items-center justify-between gap-16 md:gap-12 w-full">
         
         {/* Text Content */}
         <div className="flex-1 text-center md:text-left">
@@ -239,7 +248,7 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tight mb-6">
+            <h1 className="text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tight mb-4 md:mb-6">
               Hi, I'm <br className="hidden md:block" />
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400">Ashish Mandal</span>
             </h1>
@@ -249,9 +258,9 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-xl md:text-2xl text-slate-400 mb-10 font-light"
+            className="text-lg sm:text-xl md:text-2xl text-slate-400 mb-8 md:mb-10 font-light"
           >
-            Creative Developer <span className="text-indigo-500 mx-2">|</span> AI Enthusiast <br className="hidden md:block" /> SEO Learner
+            Creative Developer <span className="text-indigo-500 mx-1 md:mx-2">|</span> AI Enthusiast <br className="hidden md:block" /> SEO Learner
           </motion.p>
 
           <motion.div 
@@ -260,10 +269,10 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4"
           >
-            <a href="#projects" className="px-8 py-3 md:py-4 rounded-full bg-white text-slate-950 font-semibold hover:bg-slate-200 transition-colors w-full sm:w-auto text-center shadow-[0_0_20px_rgba(255,255,255,0.3)] hover:shadow-[0_0_30px_rgba(255,255,255,0.5)]">
+            <a href="#projects" className="px-6 py-3 md:px-8 md:py-4 rounded-full bg-white text-slate-950 font-semibold hover:bg-slate-200 transition-colors w-full sm:w-auto text-center shadow-[0_0_20px_rgba(255,255,255,0.3)] hover:shadow-[0_0_30px_rgba(255,255,255,0.5)]">
               View Projects
             </a>
-            <a href="#materials" className="px-8 py-3 md:py-4 rounded-full bg-white/5 text-white font-semibold backdrop-blur-md border border-white/10 hover:bg-white/10 transition-colors w-full sm:w-auto text-center hover:border-white/30">
+            <a href="#materials" className="px-6 py-3 md:px-8 md:py-4 rounded-full bg-white/5 text-white font-semibold backdrop-blur-md border border-white/10 hover:bg-white/10 transition-colors w-full sm:w-auto text-center hover:border-white/30">
               Study Materials
             </a>
           </motion.div>
@@ -274,7 +283,7 @@ const Hero = () => {
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="flex-1 flex justify-center items-center relative mt-16 md:mt-0"
+          className="flex-1 flex justify-center items-center relative mt-12 mb-8 md:mt-0 md:mb-0 w-full max-w-[100vw]"
           style={{ perspective: 1200 }}
         >
           {/* Core Glowing Background Blob */}
@@ -284,7 +293,7 @@ const Hero = () => {
               rotate: [0, 90, 0]
             }}
             transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute w-[320px] h-[420px] md:w-[450px] md:h-[550px] bg-gradient-to-tr from-indigo-500/30 via-purple-500/30 to-pink-500/30 rounded-full blur-[100px]"
+            className="absolute w-[260px] h-[360px] sm:w-[320px] sm:h-[420px] md:w-[450px] md:h-[550px] bg-gradient-to-tr from-indigo-500/30 via-purple-500/30 to-pink-500/30 rounded-full blur-[80px] md:blur-[100px]"
           />
           
           {/* 3D Tilt Container */}
@@ -292,37 +301,57 @@ const Hero = () => {
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
             style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
-            className="relative w-[280px] h-[380px] md:w-[340px] md:h-[480px] rounded-[2rem] p-[2px] bg-gradient-to-br from-indigo-400/50 via-purple-400/20 to-pink-400/50 shadow-[0_30px_60px_rgba(0,0,0,0.6),0_0_40px_rgba(99,102,241,0.2)] cursor-pointer group"
+            className="relative w-[220px] h-[300px] sm:w-[280px] sm:h-[380px] md:w-[340px] md:h-[480px] cursor-pointer group"
           >
-            {/* Inner Image Container */}
+            {/* Background Photo 2 */}
             <div 
-              className="w-full h-full rounded-[1.85rem] overflow-hidden bg-slate-900 relative"
+              className="absolute inset-0 rounded-[2rem] overflow-hidden border border-white/10 shadow-[0_20px_40px_rgba(0,0,0,0.5)] transition-all duration-700 ease-out group-hover:rotate-[15deg] group-hover:translate-x-12 group-hover:-translate-y-4 group-hover:scale-105"
+              style={{ transform: "translateZ(-60px) rotate(8deg) scale(0.9)" }}
+            >
+              <img src="https://picsum.photos/seed/ashish3/800/1100" className="w-full h-full object-cover opacity-40 group-hover:opacity-80 transition-opacity duration-700" referrerPolicy="no-referrer" />
+              <div className="absolute inset-0 bg-indigo-900/40 mix-blend-overlay" />
+            </div>
+
+            {/* Background Photo 1 */}
+            <div 
+              className="absolute inset-0 rounded-[2rem] overflow-hidden border border-white/10 shadow-[0_20px_40px_rgba(0,0,0,0.5)] transition-all duration-700 ease-out group-hover:rotate-[-12deg] group-hover:-translate-x-12 group-hover:-translate-y-2 group-hover:scale-105"
+              style={{ transform: "translateZ(-30px) rotate(-6deg) scale(0.95)" }}
+            >
+              <img src="https://picsum.photos/seed/ashish2/800/1100" className="w-full h-full object-cover opacity-60 group-hover:opacity-90 transition-opacity duration-700" referrerPolicy="no-referrer" />
+              <div className="absolute inset-0 bg-purple-900/30 mix-blend-overlay" />
+            </div>
+
+            {/* Main Front Photo Container */}
+            <div 
+              className="absolute inset-0 rounded-[2rem] p-[2px] bg-gradient-to-br from-indigo-400/50 via-purple-400/20 to-pink-400/50 shadow-[0_30px_60px_rgba(0,0,0,0.6),0_0_40px_rgba(99,102,241,0.2)] transition-transform duration-700 ease-out"
               style={{ transform: "translateZ(40px)", transformStyle: "preserve-3d" }}
             >
-              {/* Image */}
-              <img 
-                src="https://picsum.photos/seed/ashish/800/1100" 
-                alt="Ashish Mandal" 
-                className="w-full h-full object-cover scale-105 group-hover:scale-110 transition-transform duration-1000 ease-out"
-                referrerPolicy="no-referrer"
-              />
-              
-              {/* Dynamic Lighting Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-tr from-indigo-900/40 via-transparent to-purple-900/40 mix-blend-overlay" />
-              
-              {/* Interactive Glare/Reflection */}
-              <motion.div 
-                className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/20 to-white/0 pointer-events-none mix-blend-overlay"
-                style={{ x: glareX, y: glareY }}
-              />
-              
-              {/* Hover Shine Effect (Sweep) */}
-              <div className="absolute inset-0 overflow-hidden rounded-[1.85rem] pointer-events-none">
-                <div className="absolute top-0 left-[-150%] w-[150%] h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 group-hover:left-[150%] transition-all duration-1500 ease-in-out" />
-              </div>
+              <div className="w-full h-full rounded-[1.85rem] overflow-hidden bg-slate-900 relative" style={{ transformStyle: "preserve-3d" }}>
+                {/* Image */}
+                <img 
+                  src="https://picsum.photos/seed/ashish/800/1100" 
+                  alt="Ashish Mandal" 
+                  className="w-full h-full object-cover scale-105 group-hover:scale-110 transition-transform duration-1000 ease-out"
+                  referrerPolicy="no-referrer"
+                />
+                
+                {/* Dynamic Lighting Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-tr from-indigo-900/40 via-transparent to-purple-900/40 mix-blend-overlay" />
+                
+                {/* Interactive Glare/Reflection */}
+                <motion.div 
+                  className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/20 to-white/0 pointer-events-none mix-blend-overlay"
+                  style={{ x: glareX, y: glareY }}
+                />
+                
+                {/* Hover Shine Effect (Sweep) */}
+                <div className="absolute inset-0 overflow-hidden rounded-[1.85rem] pointer-events-none">
+                  <div className="absolute top-0 left-[-150%] w-[150%] h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 group-hover:left-[150%] transition-all duration-1500 ease-in-out" />
+                </div>
 
-              {/* Inner Border Glow */}
-              <div className="absolute inset-0 rounded-[1.85rem] border border-white/10 group-hover:border-white/30 transition-colors duration-500 pointer-events-none" />
+                {/* Inner Border Glow */}
+                <div className="absolute inset-0 rounded-[1.85rem] border border-white/10 group-hover:border-white/30 transition-colors duration-500 pointer-events-none" />
+              </div>
             </div>
 
             {/* Floating Particles around the frame */}
@@ -335,15 +364,15 @@ const Hero = () => {
               animate={{ y: [-10, 10, -10] }}
               transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
               style={{ transform: "translateZ(80px)" }}
-              className="absolute -top-8 -right-8 md:-right-12 bg-slate-900/60 backdrop-blur-xl border border-white/20 px-5 py-3 rounded-2xl shadow-[0_20px_40px_rgba(0,0,0,0.4)] flex items-center gap-4 group-hover:border-indigo-400/50 transition-colors duration-500"
+              className="absolute -top-6 -right-4 sm:-top-8 sm:-right-8 md:-right-12 bg-slate-900/60 backdrop-blur-xl border border-white/20 px-3 py-2 sm:px-5 sm:py-3 rounded-2xl shadow-[0_20px_40px_rgba(0,0,0,0.4)] flex items-center gap-2 sm:gap-4 group-hover:border-indigo-400/50 transition-colors duration-500"
             >
               <div className="relative">
                 <div className="absolute inset-0 bg-indigo-500 blur-md opacity-50 rounded-full" />
-                <span className="text-3xl relative z-10">🚀</span>
+                <span className="text-xl sm:text-3xl relative z-10">🚀</span>
               </div>
               <div className="flex flex-col">
-                <span className="text-[10px] text-indigo-300 font-bold uppercase tracking-widest">Creative</span>
-                <span className="text-base text-white font-black tracking-tight">Developer</span>
+                <span className="text-[8px] sm:text-[10px] text-indigo-300 font-bold uppercase tracking-widest">Creative</span>
+                <span className="text-xs sm:text-base text-white font-black tracking-tight">Developer</span>
               </div>
             </motion.div>
 
@@ -352,15 +381,15 @@ const Hero = () => {
               animate={{ y: [10, -10, 10] }}
               transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
               style={{ transform: "translateZ(100px)" }}
-              className="absolute -bottom-8 -left-8 md:-left-12 bg-slate-900/60 backdrop-blur-xl border border-white/20 px-5 py-3 rounded-2xl shadow-[0_20px_40px_rgba(0,0,0,0.4)] flex items-center gap-4 group-hover:border-purple-400/50 transition-colors duration-500"
+              className="absolute -bottom-6 -left-4 sm:-bottom-8 sm:-left-8 md:-left-12 bg-slate-900/60 backdrop-blur-xl border border-white/20 px-3 py-2 sm:px-5 sm:py-3 rounded-2xl shadow-[0_20px_40px_rgba(0,0,0,0.4)] flex items-center gap-2 sm:gap-4 group-hover:border-purple-400/50 transition-colors duration-500"
             >
-              <div className="relative p-2 bg-gradient-to-br from-purple-500/30 to-indigo-500/30 rounded-xl border border-white/10">
+              <div className="relative p-1.5 sm:p-2 bg-gradient-to-br from-purple-500/30 to-indigo-500/30 rounded-xl border border-white/10">
                 <div className="absolute inset-0 bg-purple-500 blur-md opacity-40 rounded-xl" />
-                <Sparkles className="w-6 h-6 text-purple-300 relative z-10" />
+                <Sparkles className="w-4 h-4 sm:w-6 sm:h-6 text-purple-300 relative z-10" />
               </div>
               <div className="flex flex-col">
-                <span className="text-[10px] text-purple-300 font-bold uppercase tracking-widest">AI & SEO</span>
-                <span className="text-base text-white font-black tracking-tight">Enthusiast</span>
+                <span className="text-[8px] sm:text-[10px] text-purple-300 font-bold uppercase tracking-widest">AI & SEO</span>
+                <span className="text-xs sm:text-base text-white font-black tracking-tight">Enthusiast</span>
               </div>
             </motion.div>
             
@@ -369,9 +398,9 @@ const Hero = () => {
               animate={{ y: [-8, 8, -8], x: [0, 8, 0], rotate: [0, 10, 0] }}
               transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 2.5 }}
               style={{ transform: "translateZ(60px)" }}
-              className="absolute top-1/2 -right-6 md:-right-8 bg-slate-900/80 backdrop-blur-xl border border-pink-500/30 p-4 rounded-full shadow-[0_10px_30px_rgba(236,72,153,0.3)] group-hover:border-pink-400/80 transition-colors duration-500"
+              className="absolute top-1/2 -right-3 sm:-right-6 md:-right-8 bg-slate-900/80 backdrop-blur-xl border border-pink-500/30 p-2 sm:p-4 rounded-full shadow-[0_10px_30px_rgba(236,72,153,0.3)] group-hover:border-pink-400/80 transition-colors duration-500"
             >
-              <Code className="w-6 h-6 text-pink-400" />
+              <Code className="w-4 h-4 sm:w-6 sm:h-6 text-pink-400" />
             </motion.div>
 
           </motion.div>
@@ -579,7 +608,7 @@ const Projects = () => {
                 href={project.link}
                 className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl text-white font-medium transition-colors whitespace-nowrap"
               >
-                View Details <ChevronRight className="w-4 h-4" />
+                {project.buttonText || 'View Details'} <ChevronRight className="w-4 h-4" />
               </a>
             </motion.div>
           ))}
