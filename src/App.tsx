@@ -24,10 +24,7 @@ import {
   Menu,
   Code,
   Sparkles,
-  Search,
-  Mail,
-  MapPin,
-  CheckCircle2
+  Search
 } from 'lucide-react';
 
 // --- Types ---
@@ -155,7 +152,6 @@ const Navbar = () => {
     { name: 'Materials', href: '#materials' },
     { name: 'Projects', href: '#projects' },
     { name: 'Socials', href: '#socials' },
-    { name: 'Contact', href: '#contact' },
   ];
 
   return (
@@ -312,7 +308,7 @@ const Hero = () => {
               className="absolute inset-0 rounded-[2rem] overflow-hidden border border-white/10 shadow-[0_20px_40px_rgba(0,0,0,0.5)] transition-all duration-700 ease-out group-hover:rotate-[15deg] group-hover:translate-x-12 group-hover:-translate-y-4 group-hover:scale-105"
               style={{ transform: "translateZ(-60px) rotate(8deg) scale(0.9)" }}
             >
-              <img src="/front-pic.jpg" className="w-full h-full object-cover opacity-40 group-hover:opacity-80 transition-opacity duration-700" />
+              <img src="https://picsum.photos/seed/ashish3/800/1100" className="w-full h-full object-cover opacity-40 group-hover:opacity-80 transition-opacity duration-700" referrerPolicy="no-referrer" />
               <div className="absolute inset-0 bg-indigo-900/40 mix-blend-overlay" />
             </div>
 
@@ -321,7 +317,7 @@ const Hero = () => {
               className="absolute inset-0 rounded-[2rem] overflow-hidden border border-white/10 shadow-[0_20px_40px_rgba(0,0,0,0.5)] transition-all duration-700 ease-out group-hover:rotate-[-12deg] group-hover:-translate-x-12 group-hover:-translate-y-2 group-hover:scale-105"
               style={{ transform: "translateZ(-30px) rotate(-6deg) scale(0.95)" }}
             >
-              <img src="/front-pic.jpg" className="w-full h-full object-cover opacity-60 group-hover:opacity-90 transition-opacity duration-700" />
+              <img src="https://picsum.photos/seed/ashish2/800/1100" className="w-full h-full object-cover opacity-60 group-hover:opacity-90 transition-opacity duration-700" referrerPolicy="no-referrer" />
               <div className="absolute inset-0 bg-purple-900/30 mix-blend-overlay" />
             </div>
 
@@ -336,6 +332,11 @@ const Hero = () => {
                   src="/front-pic.jpg" 
                   alt="Ashish Mandal" 
                   className="w-full h-full object-cover scale-105 group-hover:scale-110 transition-transform duration-1000 ease-out"
+                  referrerPolicy="no-referrer"
+                  onError={(e) => {
+                    // Fallback if the user hasn't uploaded the image yet
+                    (e.target as HTMLImageElement).src = "https://picsum.photos/seed/ashish/800/1100";
+                  }}
                 />
                 
                 {/* Dynamic Lighting Overlay */}
@@ -543,10 +544,10 @@ const StudyMaterials = () => {
           {MATERIALS.map((material, index) => (
             <motion.div
               key={material.id}
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.6, delay: index * 0.15, ease: "easeOut" }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
               onClick={() => setSelectedMaterial(material)}
               className="group cursor-pointer bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:bg-white/10 hover:border-indigo-500/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(99,102,241,0.15)]"
             >
@@ -589,10 +590,10 @@ const Projects = () => {
           {PROJECTS.map((project, index) => (
             <motion.div
               key={project.id}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.6, delay: index * 0.15, ease: "easeOut" }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
               className="group bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 md:p-8 flex flex-col md:flex-row md:items-center justify-between gap-6 hover:bg-white/10 transition-colors"
             >
               <div className="flex-1">
@@ -658,128 +659,22 @@ const Socials = () => {
 };
 
 const Footer = () => {
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
-  const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!formData.name || !formData.email || !formData.message) {
-      setStatus('error');
-      return;
-    }
-    setStatus('submitting');
-    // Simulate API call
-    setTimeout(() => {
-      setStatus('success');
-      setFormData({ name: '', email: '', message: '' });
-      setTimeout(() => setStatus('idle'), 3000);
-    }, 1500);
-  };
-
   return (
-    <footer id="contact" className="border-t border-white/10 bg-slate-950 pt-16 pb-8 relative overflow-hidden">
-      {/* Background glow */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-indigo-500/5 rounded-full blur-[100px] pointer-events-none" />
-      
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
-          {/* Contact Info */}
-          <div>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Let's Connect</h2>
-            <p className="text-slate-400 mb-8 max-w-md text-lg">
-              Have a project in mind or just want to say hi? I'm always open to discussing new opportunities and creative ideas.
-            </p>
-            
-            <div className="space-y-6 text-slate-300">
-              <div className="flex items-center gap-4 group">
-                <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center border border-white/10 group-hover:border-indigo-400/50 group-hover:bg-indigo-500/10 transition-colors">
-                  <Mail className="w-5 h-5 text-indigo-400" />
-                </div>
-                <a href="mailto:hello@example.com" className="text-lg hover:text-white transition-colors">hello@example.com</a>
-              </div>
-              <div className="flex items-center gap-4 group">
-                <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center border border-white/10 group-hover:border-pink-400/50 group-hover:bg-pink-500/10 transition-colors">
-                  <MapPin className="w-5 h-5 text-pink-400" />
-                </div>
-                <span className="text-lg">San Francisco, CA</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Contact Form */}
-          <div className="bg-slate-900/50 backdrop-blur-sm border border-white/10 rounded-2xl p-6 md:p-8 shadow-xl">
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <label htmlFor="name" className="text-sm font-medium text-slate-300">Name</label>
-                  <input 
-                    type="text" 
-                    id="name"
-                    value={formData.name}
-                    onChange={(e) => setFormData({...formData, name: e.target.value})}
-                    className="w-full bg-slate-950/50 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 transition-all"
-                    placeholder="John Doe"
-                    required
-                  />
-                </div>
-                <div className="space-y-2">
-                  <label htmlFor="email" className="text-sm font-medium text-slate-300">Email</label>
-                  <input 
-                    type="email" 
-                    id="email"
-                    value={formData.email}
-                    onChange={(e) => setFormData({...formData, email: e.target.value})}
-                    className="w-full bg-slate-950/50 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 transition-all"
-                    placeholder="john@example.com"
-                    required
-                  />
-                </div>
-              </div>
-              <div className="space-y-2">
-                <label htmlFor="message" className="text-sm font-medium text-slate-300">Message</label>
-                <textarea 
-                  id="message"
-                  value={formData.message}
-                  onChange={(e) => setFormData({...formData, message: e.target.value})}
-                  rows={4}
-                  className="w-full bg-slate-950/50 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 transition-all resize-none"
-                  placeholder="Tell me about your project..."
-                  required
-                />
-              </div>
-              
-              {status === 'error' && <p className="text-red-400 text-sm">Please fill out all fields.</p>}
-              {status === 'success' && <p className="text-emerald-400 text-sm">Message sent successfully! I'll get back to you soon.</p>}
-              
-              <button 
-                type="submit" 
-                disabled={status === 'submitting' || status === 'success'}
-                className="w-full bg-gradient-to-r from-indigo-500 to-purple-500 hover:from-indigo-600 hover:to-purple-600 text-white font-semibold py-3 px-6 rounded-xl transition-all shadow-[0_0_20px_rgba(99,102,241,0.3)] hover:shadow-[0_0_30px_rgba(99,102,241,0.5)] disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2 mt-2"
-              >
-                {status === 'submitting' ? (
-                  <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                ) : status === 'success' ? (
-                  <>Sent <CheckCircle2 className="w-5 h-5" /></>
-                ) : (
-                  <>Send Message <Send className="w-5 h-5" /></>
-                )}
-              </button>
-            </form>
-          </div>
+    <footer className="border-t border-white/10 bg-slate-950 py-12">
+      <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+        <div className="text-center md:text-left">
+          <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-purple-400">AM.</span>
+          <p className="text-slate-500 text-sm mt-2">© {new Date().getFullYear()} Ashish Mandal. All rights reserved.</p>
         </div>
-
-        {/* Bottom Bar */}
-        <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
-          <div className="text-center md:text-left">
-            <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-purple-400">AM.</span>
-            <p className="text-slate-500 text-sm mt-1">© {new Date().getFullYear()} Ashish Mandal. All rights reserved.</p>
-          </div>
-          
-          <div className="flex flex-wrap justify-center gap-6 text-sm font-medium text-slate-400">
-            <a href="#about" className="hover:text-white transition-colors">About</a>
-            <a href="#materials" className="hover:text-white transition-colors">Materials</a>
-            <a href="#projects" className="hover:text-white transition-colors">Projects</a>
-          </div>
+        
+        <div className="flex gap-6 text-sm font-medium text-slate-400">
+          <a href="#about" className="hover:text-white transition-colors">About</a>
+          <a href="#materials" className="hover:text-white transition-colors">Materials</a>
+          <a href="#projects" className="hover:text-white transition-colors">Projects</a>
+        </div>
+        
+        <div className="text-sm text-slate-400">
+          <a href="mailto:hello@example.com" className="hover:text-white transition-colors">hello@example.com</a>
         </div>
       </div>
     </footer>
