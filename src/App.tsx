@@ -312,7 +312,7 @@ const Hero = () => {
               className="absolute inset-0 rounded-[2rem] overflow-hidden border border-white/10 shadow-[0_20px_40px_rgba(0,0,0,0.5)] transition-all duration-700 ease-out group-hover:rotate-[15deg] group-hover:translate-x-12 group-hover:-translate-y-4 group-hover:scale-105"
               style={{ transform: "translateZ(-60px) rotate(8deg) scale(0.9)" }}
             >
-              <img src="https://picsum.photos/seed/ashish3/800/1100" className="w-full h-full object-cover opacity-40 group-hover:opacity-80 transition-opacity duration-700" referrerPolicy="no-referrer" />
+              <img src="/front-pic.jpg" className="w-full h-full object-cover opacity-40 group-hover:opacity-80 transition-opacity duration-700" />
               <div className="absolute inset-0 bg-indigo-900/40 mix-blend-overlay" />
             </div>
 
@@ -321,7 +321,7 @@ const Hero = () => {
               className="absolute inset-0 rounded-[2rem] overflow-hidden border border-white/10 shadow-[0_20px_40px_rgba(0,0,0,0.5)] transition-all duration-700 ease-out group-hover:rotate-[-12deg] group-hover:-translate-x-12 group-hover:-translate-y-2 group-hover:scale-105"
               style={{ transform: "translateZ(-30px) rotate(-6deg) scale(0.95)" }}
             >
-              <img src="/front-pic.jpg" className="w-full h-full object-cover opacity-60 group-hover:opacity-90 transition-opacity duration-700" referrerPolicy="no-referrer" onError={(e) => { const target = e.target as HTMLImageElement; if (target.src !== "https://picsum.photos/seed/ashish2/800/1100") target.src = "https://picsum.photos/seed/ashish2/800/1100"; }} />
+              <img src="/front-pic.jpg" className="w-full h-full object-cover opacity-60 group-hover:opacity-90 transition-opacity duration-700" />
               <div className="absolute inset-0 bg-purple-900/30 mix-blend-overlay" />
             </div>
 
@@ -336,13 +336,6 @@ const Hero = () => {
                   src="/front-pic.jpg" 
                   alt="Ashish Mandal" 
                   className="w-full h-full object-cover scale-105 group-hover:scale-110 transition-transform duration-1000 ease-out"
-                  referrerPolicy="no-referrer"
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    if (target.src !== "front-pic.jpg") {
-                      target.src = "front-pic.jpg";
-                    }
-                  }}
                 />
                 
                 {/* Dynamic Lighting Overlay */}
@@ -550,10 +543,10 @@ const StudyMaterials = () => {
           {MATERIALS.map((material, index) => (
             <motion.div
               key={material.id}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              transition={{ duration: 0.6, delay: index * 0.15, ease: "easeOut" }}
               onClick={() => setSelectedMaterial(material)}
               className="group cursor-pointer bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:bg-white/10 hover:border-indigo-500/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(99,102,241,0.15)]"
             >
@@ -596,10 +589,10 @@ const Projects = () => {
           {PROJECTS.map((project, index) => (
             <motion.div
               key={project.id}
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              transition={{ duration: 0.6, delay: index * 0.15, ease: "easeOut" }}
               className="group bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 md:p-8 flex flex-col md:flex-row md:items-center justify-between gap-6 hover:bg-white/10 transition-colors"
             >
               <div className="flex-1">
