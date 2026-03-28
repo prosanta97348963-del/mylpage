@@ -158,7 +158,7 @@ const Navbar = () => {
     <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? 'bg-slate-950/80 backdrop-blur-md border-b border-white/10 py-4' : 'bg-transparent py-6'}`}>
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
         <a href="#" className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-purple-400">
-          AM.
+          ashistyz
         </a>
         
         {/* Desktop Nav */}
@@ -250,7 +250,7 @@ const Hero = () => {
           >
             <h1 className="text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tight mb-4 md:mb-6">
               Hi, I'm <br className="hidden md:block" />
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400">Ashish Mandal</span>
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400">Ashish Mandal (ashistyz)</span>
             </h1>
           </motion.div>
           
@@ -432,7 +432,7 @@ const About = () => {
             <div>
               <h2 className="text-3xl md:text-4xl font-bold mb-6">About Me</h2>
               <p className="text-slate-300 leading-relaxed mb-6 text-lg">
-                I'm a passionate developer exploring the intersection of modern web technologies, artificial intelligence, and search engine optimization. I love building digital experiences that are not only visually stunning but also highly performant and discoverable.
+                I'm Ashish Mandal, also known online as <strong className="text-white">ashistyz</strong>. I'm a passionate developer exploring the intersection of modern web technologies, artificial intelligence, and search engine optimization. I love building digital experiences that are not only visually stunning but also highly performant and discoverable.
               </p>
               <p className="text-slate-300 leading-relaxed text-lg">
                 Currently, I'm focused on expanding my knowledge in AI tools to streamline development workflows and mastering SEO to ensure the content I build reaches the right audience.
@@ -663,8 +663,8 @@ const Footer = () => {
     <footer className="border-t border-white/10 bg-slate-950 py-12">
       <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
         <div className="text-center md:text-left">
-          <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-purple-400">AM.</span>
-          <p className="text-slate-500 text-sm mt-2">© {new Date().getFullYear()} Ashish Mandal. All rights reserved.</p>
+          <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-purple-400">ashistyz</span>
+          <p className="text-slate-500 text-sm mt-2">© {new Date().getFullYear()} Ashish Mandal (ashistyz). All rights reserved.</p>
         </div>
         
         <div className="flex gap-6 text-sm font-medium text-slate-400">
