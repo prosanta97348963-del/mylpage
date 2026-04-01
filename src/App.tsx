@@ -310,7 +310,7 @@ const Hero = () => {
               className="absolute inset-0 rounded-[2rem] overflow-hidden border border-white/10 shadow-[0_20px_40px_rgba(0,0,0,0.5)] transition-all duration-700 ease-out group-hover:rotate-[15deg] group-hover:translate-x-12 group-hover:-translate-y-4 group-hover:scale-105"
               style={{ transform: "translateZ(-60px) rotate(8deg) scale(0.9)" }}
             >
-              <img src={frontPic} alt="Background 2" className="w-full h-full object-cover opacity-40 group-hover:opacity-80 transition-opacity duration-700" onError={(e) => { (e.target as HTMLImageElement).src = "https://picsum.photos/seed/ashish3/800/1100"; }} />
+              <img src={frontPic} alt="Background 2" className="w-full h-full object-cover opacity-40 group-hover:opacity-80 transition-opacity duration-700" />
               <div className="absolute inset-0 bg-indigo-900/40 mix-blend-overlay" />
             </div>
 
@@ -319,7 +319,7 @@ const Hero = () => {
               className="absolute inset-0 rounded-[2rem] overflow-hidden border border-white/10 shadow-[0_20px_40px_rgba(0,0,0,0.5)] transition-all duration-700 ease-out group-hover:rotate-[-12deg] group-hover:-translate-x-12 group-hover:-translate-y-2 group-hover:scale-105"
               style={{ transform: "translateZ(-30px) rotate(-6deg) scale(0.95)" }}
             >
-              <img src={frontPic} alt="Background 1" className="w-full h-full object-cover opacity-60 group-hover:opacity-90 transition-opacity duration-700" onError={(e) => { (e.target as HTMLImageElement).src = "https://picsum.photos/seed/ashish2/800/1100"; }} />
+              <img src={frontPic} alt="Background 1" className="w-full h-full object-cover opacity-60 group-hover:opacity-90 transition-opacity duration-700" />
               <div className="absolute inset-0 bg-purple-900/30 mix-blend-overlay" />
             </div>
 
@@ -334,10 +334,6 @@ const Hero = () => {
                   src={frontPic} 
                   alt="Ashish Mandal" 
                   className="w-full h-full object-cover scale-105 group-hover:scale-110 transition-transform duration-1000 ease-out"
-                  onError={(e) => {
-                    // Fallback if the user hasn't uploaded the image yet
-                    (e.target as HTMLImageElement).src = "https://picsum.photos/seed/ashish/800/1100";
-                  }}
                 />
                 
                 {/* Dynamic Lighting Overlay */}
