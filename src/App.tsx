@@ -27,7 +27,7 @@ import {
   Search
 } from 'lucide-react';
 
-import frontPic from './assets/front-pic.jpg';
+const frontPic = "https://i.postimg.cc/HW25TpWk/front-pic-jpg.jpg";
 
 // --- Types ---
 type MaterialCategory = 'PDFs' | 'YouTube Tutorials' | 'Notes' | 'Tools' | 'Resources';
