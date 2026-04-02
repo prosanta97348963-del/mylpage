@@ -95,7 +95,7 @@ const MATERIALS: Material[] = [
     icon: <LinkIcon className="w-6 h-6" />
   }
 ];
-hhhhhhh
+
 const PROJECTS: Project[] = [
   {
     id: '1',
