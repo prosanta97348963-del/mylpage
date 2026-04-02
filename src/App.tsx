@@ -56,10 +56,10 @@ interface Project {
 const MATERIALS: Material[] = [
   {
     id: '1',
-    title: 'Advanced React Patterns',
+    title: 'Basic Word, Excel, Access, PowerPoint',
     category: 'PDFs',
-    description: 'A comprehensive guide to modern React design patterns and performance optimization.',
-    pdfUrl: '#',
+    description: 'A complete Bengali guide for students covering MS Word, Excel, Access, and PowerPoint basics.',
+    pdfUrl: '/word-exal-fun.pdf',
     icon: <FileText className="w-6 h-6" />
   },
   {
@@ -511,7 +511,7 @@ const MaterialModal = ({ material, onClose }: { material: Material, onClose: () 
 
         <div className="flex flex-wrap gap-4">
           {material.pdfUrl && (
-            <a href={material.pdfUrl} className="flex items-center gap-2 px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl font-medium transition-colors">
+            <a href={material.pdfUrl} download className="flex items-center gap-2 px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl font-medium transition-colors">
               <Download className="w-4 h-4" /> Download PDF
             </a>
           )}
@@ -671,7 +671,7 @@ const Footer = () => {
         </div>
         
         <div className="text-sm text-slate-400">
-          <a href="mailto:hello@example.com" className="hover:text-white transition-colors">hello@example.com</a>
+          <a href="mailto:hello@ashistyz.site" className="hover:text-white transition-colors">hello@ashistyz.site</a>
         </div>
       </div>
     </footer>
