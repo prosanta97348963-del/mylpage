@@ -28,6 +28,8 @@ import {
 } from 'lucide-react';
 
 const frontPic = "https://i.postimg.cc/HW25TpWk/front-pic-jpg.jpg";
+const secondPic = "https://i.postimg.cc/8ky2q4kG/Gemini-Generated-Image-yue0uryue0uryue0.png";
+const thirdPic = "https://i.postimg.cc/ZqYVctk5/IMG-20250120-WA0026.jpg";
 
 // --- Types ---
 type MaterialCategory = 'PDFs' | 'YouTube Tutorials' | 'Notes' | 'Tools' | 'Resources';
@@ -205,6 +207,7 @@ const Navbar = () => {
 };
 
 const Hero = () => {
+  const [heroImages, setHeroImages] = useState([frontPic, secondPic, thirdPic]);
   const x = useMotionValue(0);
   const y = useMotionValue(0);
   const mouseXSpring = useSpring(x, { stiffness: 300, damping: 30 });
@@ -231,6 +234,17 @@ const Hero = () => {
   const handleMouseLeave = () => {
     x.set(0);
     y.set(0);
+  };
+
+  const handleDragEnd = (event: any, info: any) => {
+    const threshold = 50;
+    if (info.offset.x > threshold) {
+      // Swipe right: move last item to front
+      setHeroImages(prev => [prev[2], prev[0], prev[1]]);
+    } else if (info.offset.x < -threshold) {
+      // Swipe left: move first item to back
+      setHeroImages(prev => [prev[1], prev[2], prev[0]]);
+    }
   };
 
   return (
@@ -300,26 +314,30 @@ const Hero = () => {
           
           {/* 3D Tilt Container */}
           <motion.div
+            drag="x"
+            dragConstraints={{ left: 0, right: 0 }}
+            dragElastic={0.2}
+            onDragEnd={handleDragEnd}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
-            style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
-            className="relative w-[220px] h-[300px] sm:w-[280px] sm:h-[380px] md:w-[340px] md:h-[480px] cursor-pointer group"
+            style={{ rotateX, rotateY, transformStyle: "preserve-3d", touchAction: "none" }}
+            className="relative w-[220px] h-[300px] sm:w-[280px] sm:h-[380px] md:w-[340px] md:h-[480px] cursor-grab active:cursor-grabbing group"
           >
             {/* Background Photo 2 */}
             <div 
-              className="absolute inset-0 rounded-[2rem] overflow-hidden border border-white/10 shadow-[0_20px_40px_rgba(0,0,0,0.5)] transition-all duration-700 ease-out group-hover:rotate-[15deg] group-hover:translate-x-12 group-hover:-translate-y-4 group-hover:scale-105"
-              style={{ transform: "translateZ(-60px) rotate(8deg) scale(0.9)" }}
+              className="absolute inset-0 rounded-[2rem] overflow-hidden border border-white/10 shadow-[0_20px_40px_rgba(0,0,0,0.5)] transition-all duration-700 ease-out group-hover:rotate-[18deg] group-hover:translate-x-16 group-hover:-translate-y-6 group-hover:scale-105"
+              style={{ transform: "translateZ(-60px) translateX(30px) translateY(-15px) rotate(12deg) scale(0.9)" }}
             >
-              <img src={frontPic} alt="Background 2" className="w-full h-full object-cover opacity-40 group-hover:opacity-80 transition-opacity duration-700" />
+              <img src={heroImages[2]} alt="Background 2" className="w-full h-full object-cover opacity-60 group-hover:opacity-90 transition-opacity duration-700" />
               <div className="absolute inset-0 bg-indigo-900/40 mix-blend-overlay" />
             </div>
 
             {/* Background Photo 1 */}
             <div 
-              className="absolute inset-0 rounded-[2rem] overflow-hidden border border-white/10 shadow-[0_20px_40px_rgba(0,0,0,0.5)] transition-all duration-700 ease-out group-hover:rotate-[-12deg] group-hover:-translate-x-12 group-hover:-translate-y-2 group-hover:scale-105"
-              style={{ transform: "translateZ(-30px) rotate(-6deg) scale(0.95)" }}
+              className="absolute inset-0 rounded-[2rem] overflow-hidden border border-white/10 shadow-[0_20px_40px_rgba(0,0,0,0.5)] transition-all duration-700 ease-out group-hover:rotate-[-15deg] group-hover:-translate-x-16 group-hover:-translate-y-4 group-hover:scale-105"
+              style={{ transform: "translateZ(-30px) translateX(-30px) translateY(-10px) rotate(-10deg) scale(0.95)" }}
             >
-              <img src={frontPic} alt="Background 1" className="w-full h-full object-cover opacity-60 group-hover:opacity-90 transition-opacity duration-700" />
+              <img src={heroImages[1]} alt="Background 1" className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-700" />
               <div className="absolute inset-0 bg-purple-900/30 mix-blend-overlay" />
             </div>
 
@@ -331,7 +349,7 @@ const Hero = () => {
               <div className="w-full h-full rounded-[1.85rem] overflow-hidden bg-slate-900 relative" style={{ transformStyle: "preserve-3d" }}>
                 {/* Image */}
                 <img 
-                  src={frontPic} 
+                  src={heroImages[0]} 
                   alt="Ashish Mandal" 
                   className="w-full h-full object-cover scale-105 group-hover:scale-110 transition-transform duration-1000 ease-out"
                 />
