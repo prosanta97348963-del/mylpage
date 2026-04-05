@@ -58,10 +58,10 @@ interface Project {
 const MATERIALS: Material[] = [
   {
     id: '1',
-    title: 'Basic Word, Excel, Access, PowerPoint',
-    category: 'PDFs',
+    title: 'Note by tyz',
+    category: 'Notes',
     description: 'A complete Bengali guide for students covering MS Word, Excel, Access, and PowerPoint basics.',
-    pdfUrl: '/word-exal-fun.pdf',
+    externalLink: 'https://drive.google.com/file/d/118MMLrAnpcmNpdy-Tewg7X8YkaDidyJz/view?usp=drive_link',
     icon: <FileText className="w-6 h-6" />
   },
   {
@@ -95,6 +95,14 @@ const MATERIALS: Material[] = [
     description: 'Curated links and roadmaps for aspiring frontend and backend developers.',
     externalLink: '#',
     icon: <LinkIcon className="w-6 h-6" />
+  },
+  {
+    id: '6',
+    title: 'Note by NBSE',
+    category: 'Notes',
+    description: 'My computer notes for NBSE.',
+    externalLink: 'https://drive.google.com/file/d/1-aISt8Ycv_s3eMogZeUXLSXp5qrlb1zF/view?usp=drive_link',
+    icon: <BookOpen className="w-6 h-6" />
   }
 ];
 
@@ -104,29 +112,26 @@ const PROJECTS: Project[] = [
     title: 'Ashu Chatbot',
     description: 'A smart conversational AI chatbot designed to assist users. Just interact with Ashu to experience seamless assistance and intelligent responses.',
     status: 'Ongoing',
-    link: '#',
+    link: 'https://ashu-mocha.vercel.app/',
     buttonText: 'Interact with Ashu'
   },
   {
     id: '2',
     title: 'AI Content Optimizer',
     description: 'An AI-powered tool that analyzes and optimizes blog posts for SEO, ensuring higher rankings and better readability.',
-    status: 'Ongoing',
-    link: '#'
+    status: 'Ongoing'
   },
   {
     id: '3',
     title: 'DevPortfolio Template',
     description: 'A highly customizable, animated portfolio template for developers built with React, Tailwind CSS, and Framer Motion.',
-    status: 'Completed',
-    link: '#'
+    status: 'Completed'
   },
   {
     id: '4',
     title: 'SEO Tracker Dashboard',
     description: 'Dashboard to monitor keyword rankings, site performance metrics, and backlink profiles in real-time.',
-    status: 'Ongoing',
-    link: '#'
+    status: 'Ongoing'
   }
 ];
 
@@ -623,12 +628,14 @@ const Projects = () => {
                 <p className="text-slate-400 text-lg">{project.description}</p>
               </div>
               
-              <a 
-                href={project.link}
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl text-white font-medium transition-colors whitespace-nowrap"
-              >
-                {project.buttonText || 'View Details'} <ChevronRight className="w-4 h-4" />
-              </a>
+              {project.link && (
+                <a 
+                  href={project.link}
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl text-white font-medium transition-colors whitespace-nowrap"
+                >
+                  {project.buttonText || 'View Details'} <ChevronRight className="w-4 h-4" />
+                </a>
+              )}
             </motion.div>
           ))}
         </div>
